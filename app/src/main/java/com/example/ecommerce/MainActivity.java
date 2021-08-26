@@ -18,30 +18,30 @@ public class MainActivity extends AppCompatActivity {
 
     private  RecyclerView mrecyclerview;
     private  FirebaseFirestore firebaseFirestore;
-    ItemsAdapter adapter;
-    ArrayList<Items> datalist;
+    CategoryAdapter adapter;
+    ArrayList<Category> datalist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mrecyclerview = findViewById(R.id.recyclerview);
+        mrecyclerview = findViewById(R.id.recyclerviewcategory);
         datalist=new ArrayList<>();
-        adapter=new ItemsAdapter(datalist);
+        adapter=new CategoryAdapter(datalist);
         mrecyclerview.setLayoutManager(new LinearLayoutManager(this));
         mrecyclerview.setAdapter(adapter);
 
 
         firebaseFirestore = FirebaseFirestore.getInstance();
-        firebaseFirestore.collection("Items").get()
+        firebaseFirestore.collection("Category").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         List<DocumentSnapshot> list=queryDocumentSnapshots.getDocuments();
                         for(DocumentSnapshot d:list)
                         {
-                            Items obj=d.toObject(Items.class);
+                            Category obj=d.toObject(Category.class);
                             datalist.add(obj);
                         }
                         adapter.notifyDataSetChanged();

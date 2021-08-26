@@ -1,17 +1,21 @@
 package com.example.ecommerce;
 
 public class Items {
-    String name, discription,image;
+    String name;
+    String discription;
+    String image;
+    String category;
     int quantity,price;
 
 
     public Items() {
     }
 
-    public Items(String name, String discription, String image, int quantity, int price) {
+    public Items(String name, String discription, String image,String category, int quantity, int price) {
         this.name = name;
         this.discription = discription;
         this.image = image;
+        this.category = category;
         this.quantity = quantity;
         this.price = price;
     }
@@ -54,5 +58,13 @@ public class Items {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

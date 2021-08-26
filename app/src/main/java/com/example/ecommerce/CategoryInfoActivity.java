@@ -1,6 +1,7 @@
 package com.example.ecommerce;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,7 +34,7 @@ public class CategoryInfoActivity extends AppCompatActivity {
         mrecyclerview = findViewById(R.id.recyclerviewitem);
         datalist=new ArrayList<>();
         adapter=new ItemsAdapter(datalist);
-        mrecyclerview.setLayoutManager(new LinearLayoutManager(CategoryInfoActivity.this));
+        mrecyclerview.setLayoutManager(new GridLayoutManager(CategoryInfoActivity.this,2));
         mrecyclerview.setAdapter(adapter);
 
         CategoryName = getIntent().getStringExtra("categoryname");

@@ -1,7 +1,7 @@
 package com.example.ecommerce;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         mrecyclerview = findViewById(R.id.recyclerviewcategory);
         datalist=new ArrayList<>();
         adapter=new CategoryAdapter(datalist);
-        mrecyclerview.setLayoutManager(new LinearLayoutManager(this));
+        mrecyclerview.setLayoutManager(new GridLayoutManager(this,3));
         mrecyclerview.setAdapter(adapter);
 
 

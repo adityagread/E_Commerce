@@ -1,51 +1,55 @@
 package com.example.ecommerce;
 
 public class Items {
-    String iten_name, item_discription,item_image;
+    String name, discription,image;
     int quantity,price;
 
-    public Items() {    }
 
-    public Items(String iten_name, String item_discription, String item_image, int quantity, int price) {
-        this.iten_name = iten_name;
-        this.item_discription = item_discription;
-        this.item_image = item_image;
+    public Items() {
+    }
+
+    public Items(String name, String discription, String image, int quantity, int price) {
+        this.name = name;
+        this.discription = discription;
+        this.image = image;
         this.quantity = quantity;
         this.price = price;
     }
 
-    public String getIten_name() {
-        return iten_name;
+    public String getName() {
+        return name;
     }
 
-    public String getItem_discription() {
-        return item_discription;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getQuantity() {return quantity;}
-
-    public int getPrice() {
-        return price;
+    public String getDiscription() {
+        return discription;
     }
 
-    public String getItem_image() {
-        return item_image;
+    public void setDiscription(String discription) {
+        this.discription = discription;
     }
 
-    public void setIten_name(String iten_name) {
-        this.iten_name = iten_name;
+    public String getImage() {
+        return image;
     }
 
-    public void setItem_discription(String item_discription) {
-        this.item_discription = item_discription;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public void setItem_image(String item_image) {
-        this.item_image = item_image;
+    public int getQuantity() {
+        return quantity;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     public void setPrice(int price) {

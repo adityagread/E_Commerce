@@ -19,11 +19,8 @@ import static android.content.ContentValues.TAG;
 public class ItemInfoActivity extends AppCompatActivity {
     private ImageView Item_info_image;
     private TextView Item_info_Name,Item_info_price,Item_info_quantity,Item_info_discription;
-     Items item;
+
     private FirebaseFirestore firebaseFirestore;
-    String Item_Name,Item_discription,Item_image;
-    Long Item_Price;
-    Long Item_quantity;
 
 
     @Override
@@ -36,31 +33,36 @@ public class ItemInfoActivity extends AppCompatActivity {
         Item_info_quantity = findViewById(R.id.item_info_quantity);
         Item_info_discription = findViewById(R.id.item_info_discription);
 
+        Item_info_Name.setText(getIntent().getStringExtra("uname"));
+        Item_info_price.setText(getIntent().getIntExtra("uprice",0)+ "");
+        Item_info_quantity.setText(getIntent().getIntExtra("uquantity",0)+"");
+        Item_info_discription.setText(getIntent().getStringExtra("udiscription"));
+        Glide.with(ItemInfoActivity.this)
+                .load(getIntent().getStringExtra("uimage"))
+                .into(Item_info_image);
 
-        firebaseFirestore = FirebaseFirestore.getInstance();
+
+       /* firebaseFirestore = FirebaseFirestore.getInstance();
         CollectionReference applicationsRef = firebaseFirestore.collection("Items");
         DocumentReference applicationIdRef = applicationsRef.document("vwnizGiWzE9FhgAknfkJ");
         applicationIdRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    Item_Name = document.getString("name");
-                    Item_discription = (String) document.get("discription");
-                    Item_image = (String) document.get("image");
-                    Item_Price = (Long) document.get("price");
-                    Item_quantity = (Long) document.get("quantity");
+                    Item_info_Name.setText(document.getString("name"));
+                    Item_info_price.setText(document.get("price")+"");
+                    Item_info_quantity.setText(document.get("quantity")+"");
+                    Item_info_discription.setText(document.getString("discription"));
+                    Glide.with(ItemInfoActivity.this).load(document.getString("image")).into(Item_info_image);
 
                 }
             }
-        });
+        });*/
 
 
 
-        Item_info_Name.setText(Item_Name);
-        Item_info_price.setText(Item_Price+"");
-        Item_info_quantity.setText(Item_quantity+"");
-        Item_info_discription.setText(Item_discription);
-        Glide.with(ItemInfoActivity.this).load(Item_image).into(Item_info_image);
+
+
 
     }
 }

@@ -7,6 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -25,11 +29,22 @@ public class CategoryInfoActivity extends AppCompatActivity {
     ItemsAdapter adapter;
     ArrayList<Items> datalist;
     String CategoryName;
+    TextView labletext;
+    ImageView backbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_info);
+
+        labletext = findViewById(R.id.labletext);
+        backbutton = findViewById(R.id.backbutton);
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         mrecyclerview = findViewById(R.id.recyclerviewitem);
         datalist=new ArrayList<>();
@@ -38,6 +53,7 @@ public class CategoryInfoActivity extends AppCompatActivity {
         mrecyclerview.setAdapter(adapter);
 
         CategoryName = getIntent().getStringExtra("categoryname");
+        labletext.setText(CategoryName);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseFirestore.collection("Items").whereEqualTo("category",CategoryName).get()

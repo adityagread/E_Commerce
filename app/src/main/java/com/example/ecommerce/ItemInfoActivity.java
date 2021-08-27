@@ -3,6 +3,8 @@ package com.example.ecommerce;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ import static android.content.ContentValues.TAG;
 
 public class ItemInfoActivity extends AppCompatActivity {
     private ImageView Item_info_image;
+    ImageView backbutton;
     private TextView Item_info_Name,Item_info_price,Item_info_quantity,Item_info_discription;
 
     private FirebaseFirestore firebaseFirestore;
@@ -24,6 +27,13 @@ public class ItemInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_info);
+        backbutton = findViewById(R.id.backbutton);
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         Item_info_image = findViewById(R.id.item_info_image);
         Item_info_Name = findViewById(R.id.item_info_name);
         Item_info_price = findViewById(R.id.item_info_price);
